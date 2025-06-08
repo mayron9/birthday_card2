@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Birthday Wish for Palestine!</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a Palestinian-inspired look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Pacifico&display=swap');
+        /* Pacifico for a touch of elegance, Inter for readability */
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Light neutral background, like stone */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Hide overflowing confetti for a cleaner look */
+        }
+
+        .card-container {
+            background-color: #ffffff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+            border-radius: 25px; /* More rounded corners */
+            overflow: hidden;
+            max-width: 650px; /* Slightly wider card */
+            width: 100%;
+            text-align: center;
+            padding: 40px; /* Increased inner padding */
+            animation: fadeInScale 1s ease-out; /* Enhanced animation */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* For z-index of message box */
+            border: 3px solid #008000; /* Green border, like flag */
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall 3s infinite;
+            pointer-events: none;
+            z-index: 10; /* Ensures confetti is above the card */
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Styles for the "surprise" animation */
+        #heartAnimation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 5rem; /* Large heart */
+            color: #ff0000; /* Red color, like flag */
+            opacity: 0;
+            transition: all 0.5s ease-out;
+            z-index: 60; /* Above message box */
+        }
+
+        #heartAnimation.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            animation: pulse 1s infinite alternate; /* Pulsing effect */
+        }
+
+        @keyframes pulse {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .pacifico-font {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Custom animation for the button */
+        @keyframes bounce-slow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+
+    <!-- Confetti elements container -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Heart animation element -->
+    <div id="heartAnimation" class="hidden">❤️</div>
+
+    <div class="card-container relative w-full mx-auto p-8 md:p-12 lg:p-16 flex flex-col items-center">
+        <!-- Palestinian-themed Image/Illustration Placeholder (Olive Tree) -->
+        <img
+            src="https://placehold.co/250x150/006400/FFFFFF?text=🌳+Hope+🇵🇸"
+            alt="Palestinian Olive Tree, symbol of resilience and hope"
+            class="w-48 h-auto md:w-64 lg:w-72 rounded-lg mb-8 object-cover border-4 border-black shadow-xl"
+            onerror="this.onerror=null;this.src='https://placehold.co/250x150/cccccc/000000?text=Image+Error';"
+        >
+
+        <!-- Main Heading -->
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-700 mb-6 tracking-wide leading-tight pacifico-font">
+            Kul 'Am Wa Anti Bi Khair!
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-800 mb-8 font-semibold">(Wishing You Well Every Year!)</p>
+
+        <!-- Subheading/Recipient Name -->
+        <p class="text-3xl md:text-4xl text-green-700 mb-8 font-semibold pacifico-font">
+            to the person i knew short but i liked most,
+        </p>
+
+        <!-- Birthday Message -->
+        <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-10 max-w-2xl px-4">
+            On this special day, may your spirit soar like the steadfast olive tree, rooted in strength and hope.
+            May your path be blessed with peace, joy, and the warmth of family.
+            Wishing you a year filled with prosperity, resilience, and moments that truly shine.
+            With every passing year, may your life be enriched with endless blessings.
+        </p>
+
+        <!-- Signature -->
+        <p class="text-2xl md:text-3xl font-bold text-black mt-8 pacifico-font">
+            With heartfelt blessings,
+        </p>
+        <p class="text-2xl md:text-3xl font-bold text-black pacifico-font">
+            nessrine
+        </p>
+
+        <!-- Optional: Add a simple button or interactive element -->
+        <button
+            id="surpriseButton"
+            class="mt-10 px-8 py-4 bg-gradient-to-r from-green-600 to-red-600 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-300 animate-bounce-slow"
+        >
+            Discover a Message of Hope!
+        </button>
+
+        <!-- Message Box for "surprise" -->
+        <div id="messageBox" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white p-8 rounded-lg shadow-2xl text-center max-w-sm w-full relative transform scale-0 opacity-0 transition-all duration-300 ease-out">
+                <h3 class="text-3xl font-bold text-green-700 mb-4 pacifico-font">🕊️ Enduring Spirit! 🇵🇸</h3>
+                <p class="text-lg text-gray-700 mb-6">
+                    May your life be a testament to resilience and unwavering spirit,
+                    and may peace guide your way. Happy Birthday!
+                </p>
+                <button
+                    id="closeMessageBox"
+                    class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 shadow"
+                >
+                    Barakallah!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for confetti, surprise button, and message box
+        document.addEventListener('DOMContentLoaded', () => {
+            const surpriseButton = document.getElementById('surpriseButton');
+            const messageBox = document.getElementById('messageBox');
+            const closeMessageBox = document.getElementById('closeMessageBox');
+            const heartAnimation = document.getElementById('heartAnimation');
+            const confettiContainer = document.getElementById('confetti-container');
+
+            // Function to create and animate confetti
+            function createConfetti() {
+                // Palestinian flag colors: Black, White, Red, Green
+                const confettiColors = ['#000000', '#FFFFFF', '#FF0000', '#008000'];
+                for (let i = 0; i < 70; i++) { // Generate more confetti pieces
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = -10 + 'px'; // Start above the viewport
+                    confetti.style.animationDuration = Math.random() * 3 + 4 + 's'; // Longer duration (4-7s)
+                    confetti.style.animationDelay = Math.random() * 6 + 's'; // Longer delay
+                    confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                    confetti.style.opacity = Math.random() * 0.7 + 0.3; // More varied opacity
+                    confettiContainer.appendChild(confetti);
+
+                    confetti.addEventListener('animationend', () => {
+                        confetti.remove();
+                    });
+                }
+            }
+
+            // Show the message box and trigger animations
+            if (surpriseButton) {
+                surpriseButton.addEventListener('click', () => {
+                    if (messageBox) {
+                        messageBox.classList.remove('hidden');
+                        // Add class to scale and show message box
+                        setTimeout(() => {
+                            messageBox.querySelector('div').classList.add('scale-100', 'opacity-100');
+                        }, 50);
+
+                        createConfetti(); // Create more confetti
+                        // Show heart animation
+                        if (heartAnimation) {
+                            heartAnimation.classList.remove('hidden');
+                            setTimeout(() => {
+                                heartAnimation.classList.add('show');
+                            }, 100);
+                            setTimeout(() => {
+                                heartAnimation.classList.remove('show');
+                                heartAnimation.classList.add('hidden');
+                            }, 2000); // Heart disappears after 2 seconds
+                        }
+                    }
+                });
+            }
+
+            // Hide the message box
+            if (closeMessageBox) {
+                closeMessageBox.addEventListener('click', () => {
+                    if (messageBox) {
+                        messageBox.querySelector('div').classList.remove('scale-100', 'opacity-100');
+                        setTimeout(() => {
+                            messageBox.classList.add('hidden');
+                        }, 300); // Hide after transition
+                    }
+                });
+            }
+
+            // Initial confetti on page load
+            createConfetti();
+        });
+    </script>
+</body>
+</html>
