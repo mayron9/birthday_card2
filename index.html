@@ -7,16 +7,13 @@
     <!-- Tailwind CSS CDN for easy styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for a Palestinian-inspired look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Pacifico&display=swap');
-        /* Pacifico for a touch of elegance, Inter for readability */
-
+        /* General body styling for a soft, ethereal background */
         body {
             font-family: 'Inter', sans-serif;
-            /* More vibrant radial gradient background */
-            background: radial-gradient(circle at center, #fefce8 0%, #dcfce7 30%, #a7f3d0 70%, #065f46 100%);
-            background-size: 200% 200%; /* Make gradient larger for smoother animation */
-            animation: gradientAnimation 20s ease infinite alternate; /* Slower, oscillating gradient animation */
+            /* New, delicate multi-stop gradient background */
+            background: linear-gradient(145deg, #fefeff 0%, #e8f9f5 25%, #dcf0f2 50%, #cbe8e4 75%, #b3e0dc 100%);
+            background-size: 250% 250%; /* Larger gradient for very smooth animation */
+            animation: delicateGradient 35s ease infinite alternate; /* Slower, more serene animation */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,117 +25,137 @@
             overflow-y: auto;
         }
 
-        @keyframes gradientAnimation {
+        @keyframes delicateGradient {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
 
+        /* Card Container - new unique shape and layered shadows */
         .card-container {
-            background-color: #ffffff;
-            /* Enhanced box shadow with green and gold glow */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 35px rgba(0, 128, 0, 0.5), 0 0 45px rgba(255, 215, 0, 0.4);
-            border-radius: 25px;
+            background-color: #ffffff; /* Pure white for clean, cute look */
+            /* Complex shadow for depth and ethereal glow */
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08), /* Main soft shadow */
+                        0 0 60px rgba(179, 224, 220, 0.8), /* Light green-blue glow */
+                        0 0 100px rgba(255, 240, 200, 0.7); /* Soft golden glow */
+            border-radius: 60px; /* Extremely rounded for a soft, cute blob shape */
             overflow: hidden;
-            max-width: 650px;
+            max-width: 800px; /* Even wider for more spacious feel */
             width: 100%;
             text-align: center;
-            padding: 40px;
-            animation: fadeInScale 1s ease-out;
+            padding: 70px 50px; /* Adjusted padding for better internal spacing */
+            animation: fadeInBlob 1.2s ease-out; /* Slower, more dramatic fade in */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
-            /* Thicker, black border with a subtle golden line effect */
-            border: 5px solid #000000;
-            outline: 2px solid #FFD700; /* Gold outline */
-            outline-offset: -7px; /* Pull outline inside border */
+            /* A subtle, artistic border inspired by Palestinian motifs */
+            border: 4px solid #b3e0dc; /* A soft, muted teal-green for the main border */
+            outline: 2px solid #f0e68c; /* Soft gold inner outline */
+            outline-offset: -12px; /* Pull outline further in for a layered effect */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover transition */
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+        .card-container:hover {
+            transform: translateY(-5px) scale(1.005); /* Slight lift and scale on hover */
+            box-shadow: 0 45px 90px rgba(0, 0, 0, 0.12),
+                        0 0 70px rgba(179, 224, 220, 0.9),
+                        0 0 110px rgba(255, 240, 200, 0.8);
+        }
+
+        @keyframes fadeInBlob {
+            from { opacity: 0; transform: translateY(-60px) scale(0.85); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
+        /* Confetti - smaller, more numerous, and delicate */
         .confetti {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 6px; /* Even smaller for a very delicate look */
+            height: 6px;
             border-radius: 50%;
             opacity: 0;
-            animation: fall 3s infinite;
+            animation: fallConfetti 4s infinite; /* Longer, gentler fall */
             pointer-events: none;
             z-index: 10;
         }
 
-        @keyframes fall {
+        @keyframes fallConfetti {
             0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
 
-        /* Styles for the "surprise" animation */
+        /* Heart animation - bigger and more vibrant */
         #heartAnimation {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            font-size: 5rem;
-            color: #ff0000; /* Red color, like flag */
+            font-size: 7rem; /* Even larger heart for impact */
+            color: #ff6666; /* Softer, slightly pastel red for cute feel */
             opacity: 0;
-            transition: all 0.5s ease-out;
+            transition: all 0.6s ease-out;
             z-index: 60;
         }
 
         #heartAnimation.show {
             transform: translate(-50%, -50%) scale(1);
             opacity: 1;
-            animation: pulse 1s infinite alternate;
+            animation: pulse 1.2s infinite alternate; /* Slower pulse */
         }
 
         @keyframes pulse {
             from { transform: translate(-50%, -50%) scale(1); }
-            to { transform: translate(-50%, -50%) scale(1.1); }
+            to { transform: translate(-50%, -50%) scale(1.15); } /* More pronounced pulse */
         }
 
         .pacifico-font {
             font-family: 'Pacifico', cursive;
         }
 
-        /* Custom animation for the button */
+        /* Button animation - gentle bounce */
         @keyframes bounce-slow {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-8px);
+                transform: translateY(-10px); /* More pronounced bounce */
             }
         }
         .animate-bounce-slow {
-            animation: bounce-slow 2s infinite ease-in-out;
+            animation: bounce-slow 2.5s infinite ease-in-out;
         }
 
-        /* Text shadow for main heading - slightly more pronounced */
+        /* Text shadow for main heading - soft and inviting */
         .text-shadow-custom {
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Very subtle text shadow */
         }
 
         /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .card-container {
-                padding: 20px;
-                border: 3px solid #000000; /* Adjust border thickness for smaller screens */
-                outline-offset: -5px;
+                padding: 40px 30px;
+                border-radius: 40px;
+                outline-offset: -10px;
             }
-            .text-5xl { font-size: 2.75rem; }
-            .text-3xl { font-size: 1.6rem; }
-            .text-xl { font-size: 1rem; }
-            .w-48 { width: 40vw; max-width: 150px; } /* Adjust image size for mobile */
+            .text-5xl { font-size: 2.8rem; }
+            .text-3xl { font-size: 1.8rem; }
+            .text-xl { font-size: 1.1rem; }
+            .w-48 { width: 60vw; max-width: 220px; } /* Adjust image size for mobile */
+            #heartAnimation { font-size: 5rem; }
         }
 
         @media (max-width: 480px) {
-            .text-5xl { font-size: 2.25rem; }
-            .text-3xl { font-size: 1.4rem; }
+            .card-container {
+                padding: 30px 20px;
+                border-radius: 30px;
+                outline-offset: -8px;
+            }
+            .text-5xl { font-size: 2.2rem; }
+            .text-3xl { font-size: 1.5rem; }
             .text-xl { font-size: 0.95rem; }
+            .w-48 { width: 70vw; max-width: 180px; }
+            #heartAnimation { font-size: 4rem; }
         }
     </style>
 </head>
@@ -151,23 +168,23 @@
     <div id="heartAnimation" class="hidden">❤️</div>
 
     <div class="card-container relative w-full mx-auto p-8 md:p-12 lg:p-16 flex flex-col items-center">
-        <!-- Palestinian-themed Image/Illustration Placeholder (Olive Tree with Dove) -->
+        <!-- Palestinian-themed Image/Illustration Placeholder (Olive Tree with Dove - Cuter, more artistic Style) -->
         <img
-            src="https://placehold.co/250x150/006400/FFFFFF?text=🕊️+Peace+%26+Hope+🌳"
+            src="https://placehold.co/250x150/b3e0dc/FFFFFF?text=🕊️+سلم+%26+أمل+🌳"
             alt="Palestinian Olive Tree with a dove, symbolizing peace and hope"
-            class="w-48 h-auto md:w-64 lg:w-72 rounded-lg mb-8 object-cover border-4 border-black shadow-xl"
+            class="w-48 h-auto md:w-64 lg:w-72 rounded-full mb-8 object-cover border-4 border-gray-400 shadow-lg"
             onerror="this.onerror=null;this.src='https://placehold.co/250x150/cccccc/000000?text=Image+Error';"
         >
 
         <!-- Main Heading -->
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-800 mb-6 tracking-wide leading-tight pacifico-font text-shadow-custom">
-            Kul 'Am Wa Anta Bi Khair!
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-600 mb-6 tracking-wide leading-tight pacifico-font text-shadow-custom">
+            Kul 'Am Wa Anti Bi Khair!
         </h1>
-        <p class="text-xl md:text-2xl text-gray-800 mb-8 font-semibold">(Wishing You Well Every Year!)</p>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 font-semibold">(Wishing You Well Every Year!)</p>
 
         <!-- Subheading/Recipient Name -->
         <p class="text-3xl md:text-4xl text-green-700 mb-8 font-semibold pacifico-font">
-            To the person i know short and loved most,
+            To the person I know short but I love most,
         </p>
 
         <!-- Birthday Message -->
@@ -179,17 +196,17 @@
         </p>
 
         <!-- Signature -->
-        <p class="text-2xl md:text-3xl font-bold text-black mt-8 pacifico-font">
+        <p class="text-2xl md:text-3xl font-bold text-gray-800 mt-8 pacifico-font">
             With heartfelt blessings,
         </p>
-        <p class="text-2xl md:text-3xl font-bold text-black pacifico-font">
+        <p class="text-2xl md:text-3xl font-bold text-gray-800 pacifico-font">
             nisrine
         </p>
 
         <!-- Optional: Add a simple button or interactive element -->
         <button
             id="surpriseButton"
-            class="mt-6 px-8 py-4 bg-gradient-to-r from-green-600 to-red-600 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-300 animate-bounce-slow"
+            class="mt-6 px-8 py-4 bg-gradient-to-r from-green-500 to-red-500 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-300 animate-bounce-slow"
         >
             Discover a Message of Hope!
         </button>
@@ -206,7 +223,7 @@
                     id="closeMessageBox"
                     class="px-6 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition duration-200 shadow"
                 >
-                    much love!
+                    Much love!
                 </button>
             </div>
         </div>
@@ -225,15 +242,15 @@
             function createConfetti() {
                 // Palestinian flag colors: Black, White, Red, Green
                 const confettiColors = ['#000000', '#FFFFFF', '#FF0000', '#008000'];
-                for (let i = 0; i < 70; i++) { // Generate more confetti pieces
+                for (let i = 0; i < 90; i++) { // Generate even more confetti for a richer effect
                     const confetti = document.createElement('div');
                     confetti.classList.add('confetti');
                     confetti.style.left = Math.random() * 100 + 'vw';
                     confetti.style.top = -10 + 'px'; // Start above the viewport
-                    confetti.style.animationDuration = Math.random() * 3 + 4 + 's'; // Longer duration (4-7s)
-                    confetti.style.animationDelay = Math.random() * 6 + 's'; // Longer delay
+                    confetti.style.animationDuration = Math.random() * 3 + 5 + 's'; // Longer duration (5-8s)
+                    confetti.style.animationDelay = Math.random() * 7 + 's'; // Longer delay
                     confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                    confetti.style.opacity = Math.random() * 0.7 + 0.3; // More varied opacity
+                    confetti.style.opacity = Math.random() * 0.8 + 0.2; // More varied opacity
                     confettiContainer.appendChild(confetti);
 
                     confetti.addEventListener('animationend', () => {
@@ -285,3 +302,4 @@
     </script>
 </body>
 </html>
+
